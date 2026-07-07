@@ -1,3 +1,5 @@
+using System.Xml;
+
 public static class ArraySelector
 {
     public static void Run()
@@ -11,6 +13,24 @@ public static class ArraySelector
 
     private static int[] ListSelector(int[] list1, int[] list2, int[] select)
     {
-        return [];
+        int[] output = new int[select.Length];
+        int list1Count = 0;
+        int list2Count = 0;
+
+        for(var num = 0; num < select.Length; num++ )
+        {
+            if(select[num] == 1)
+            {
+                output[num] = list1[list1Count];
+                list1Count++;
+            }else
+            {
+                output[num] = list2[list2Count];
+                list2Count++;
+            }
+        }
+
+
+        return output;
     }
 }

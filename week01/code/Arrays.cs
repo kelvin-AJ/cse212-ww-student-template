@@ -13,7 +13,21 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+
+        // We would create an initial empty list with the size of the length parameter given. 
+        // We would also create a double (currentMultiple) which we will initialize with the number parameter. 
+        // At each iteration, we will update the list in the currentindex(determind by our loop), and then increase currentMultiple by the number parameter
+        double[] output = new double[length];
+        double currentMultiple = number;
+
+        for(var num = 0; num < length; num++)
+        {
+            output[num] = currentMultiple;
+            currentMultiple += number;
+        }
+
+
+        return output; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +43,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // First we would create two new lists (subsection1, subsection2). The first list(subsection1) will splice the end part of the data List, while the second list(subsection2) will splice the first part.
+        // To modify the initial list, we will clear all the values in it, then, update it (in the new order, that is subsection1 first, and then subsection2) using the AddRange Method
+
+
+
+        List<int> subsection1 = data.GetRange(data.Count - amount, amount);
+        List<int> subsection2 = data.GetRange(0, data.Count - amount);
+
+        data.Clear();
+        data.AddRange(subsection1);
+        data.AddRange(subsection2);
     }
 }
