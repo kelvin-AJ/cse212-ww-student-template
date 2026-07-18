@@ -7,6 +7,30 @@
 /// less than they will stay in the queue forever.  If a person is out of turns then they will 
 /// not be added back into the queue.
 /// </summary>
+/// 
+/// 
+/*
+var players = new TakingTurnsQueue();
+
+players.AddPerson("Tim", 0);
+players.AddPerson("Bob", 2);
+players.AddPerson("Sue", 3);
+
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+Console.WriteLine(players.GetNextPerson());
+// Console.WriteLine(players.GetNextPerson()); // Sue
+*/
+
 public class TakingTurnsQueue
 {
     private readonly PersonQueue _people = new();
@@ -22,6 +46,8 @@ public class TakingTurnsQueue
     {
         var person = new Person(name, turns);
         _people.Enqueue(person);
+
+      
     }
 
     /// <summary>
@@ -40,10 +66,16 @@ public class TakingTurnsQueue
         else
         {
             Person person = _people.Dequeue();
+            if(person.Turns < 1)
+            {
+                _people.Enqueue(person);
+            }
+
             if (person.Turns > 1)
             {
                 person.Turns -= 1;
                 _people.Enqueue(person);
+                //   Console.WriteLine($"{this.ToString()}");
             }
 
             return person;
@@ -55,3 +87,5 @@ public class TakingTurnsQueue
         return _people.ToString();
     }
 }
+
+

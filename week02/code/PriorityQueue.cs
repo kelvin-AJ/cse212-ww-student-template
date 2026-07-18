@@ -1,4 +1,20 @@
-﻿public class PriorityQueue
+﻿/*
+var PriorityQueue = new PriorityQueue();
+PriorityQueue.Enqueue("Femi", 1);
+PriorityQueue.Enqueue("Tayo", 2);
+PriorityQueue.Enqueue("Tobi", 2);
+PriorityQueue.Enqueue("Jude", 3);
+
+Console.WriteLine(PriorityQueue.ToString()); 
+
+
+Console.WriteLine(PriorityQueue.Dequeue());
+Console.WriteLine(PriorityQueue.Dequeue());
+Console.WriteLine(PriorityQueue.Dequeue());
+Console.WriteLine(PriorityQueue.Dequeue());
+
+*/
+public class PriorityQueue
 {
     private List<PriorityItem> _queue = new();
 
@@ -24,14 +40,19 @@
 
         // Find the index of the item with the highest priority to remove
         var highPriorityIndex = 0;
-        for (int index = 1; index < _queue.Count - 1; index++)
+        for (int index = 0; index < _queue.Count; index++)
         {
-            if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
+            if (_queue[index].Priority > _queue[highPriorityIndex].Priority)
                 highPriorityIndex = index;
         }
 
+        // Console.WriteLine(highPriorityIndex);
+
+
         // Remove and return the item with the highest priority
+        
         var value = _queue[highPriorityIndex].Value;
+        _queue.RemoveAt(highPriorityIndex);
         return value;
     }
 
