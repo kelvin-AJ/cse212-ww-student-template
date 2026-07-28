@@ -32,7 +32,23 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        var proposedLeftX = _currX - 1;
+
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions))
+        {
+            if (directions[0])
+            {
+                _currX = proposedLeftX; 
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Current position is not in the maze map.");
+        }
     }
 
     /// <summary>
@@ -41,7 +57,23 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        var proposedRightX = _currX + 1;
+
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions))
+        {
+            if (directions[1])
+            {
+                _currX = proposedRightX;
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Current position is not in the maze map.");
+        }
     }
 
     /// <summary>
@@ -50,7 +82,23 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        var proposedUpY = _currY - 1;
+
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions))
+        {
+            if (directions[2])
+            {
+                _currY = proposedUpY;
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Current position is not in the maze map.");
+        }
     }
 
     /// <summary>
@@ -59,7 +107,23 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        var proposedDownY = _currY + 1;
+
+        if (_mazeMap.TryGetValue((_currX, _currY), out var directions))
+        {
+            if (directions[3])
+            {
+                _currY = proposedDownY;
+            }
+            else
+            {
+                throw new InvalidOperationException("Can't go that way!");
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Current position is not in the maze map.");
+        }
     }
 
     public string GetStatus()
